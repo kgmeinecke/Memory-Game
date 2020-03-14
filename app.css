@@ -1,3 +1,83 @@
 body {
   background-color: lightblue;
 }
+
+.btn:hover {
+  cursor: pointer;
+}
+/* ================= */
+/*       Start       */
+/* ================= */
+
+#start {
+  height: 100vh;
+  font-family: "bungee", cursive;
+  position: relative;
+  color: #ce29f7;
+}
+
+#title {
+  font-size: 8rem;
+  perspective: 600px;
+}
+
+#title p {
+  transform: rotateX(45deg);
+  line-height: 0.75;
+  color: #610079;
+}
+
+#start.playing {
+  margin-top: -100vh;
+  transition: margin-top 1000ms;
+}
+
+/* ================= */
+/*        Game       */
+/* ================= */
+
+#game {
+  display: none;
+}
+
+#start.playing + #game {
+  display: inline;
+}
+
+/* ================= */
+/*        Card       */
+/* ================= */
+
+.front,
+.back {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid black;
+  border-radius: 8px;
+  height: 100%;
+  width: 100%;
+  backface-visibility: visible;
+}
+
+.front {
+  font-size: 3rem;
+  background: linear-gradient(150deg, red, orange, yellow, green, blue);
+}
+
+.back {
+  transform: rotateY(180deg);
+}
+
+.back > img {
+  height: 100%;
+  width: auto;
+}
+
+/* ================= */
+/*        End        */
+/* ================= */
+
+#end {
+  display: none;
+}
