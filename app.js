@@ -1,7 +1,20 @@
 const gameCards = document.querySelectorAll(".game-card");
 let numCards = gameCards.length,
   currentScore = 0,
-  cardsFlipped = 0;
+  cardsFlipped = 0,
+  card1 = null,
+  card2 = null;
+
+// ===========================
+//  Add listener to each Card
+// ===========================
+for (let card of gameCards) {
+  card.addEventListener("click", clickCard);
+}
+
+// ======================
+//     Start Game
+// ======================
 
 let startBtn = document.querySelector("#start-button");
 startBtn.addEventListener("click", startGame);
@@ -17,15 +30,12 @@ function startGame() {
   for (let i = 1; i <= numCards / 2; i++) {
     gifsArray.push(i.toString());
   }
-
   // concatenate 2 gifsArrays and shuffle them
   let doubleGifsArray = shuffle(gifsArray.concat(gifsArray));
-
   // create path for each gif
-  for (let gif of doubleGifsArray) {
-    let path = `gifs/${gif}.gif`;
-    console.log(path);
-    // console.log(cards[i].children[1].children[0].src = path);
+  for (let i = 0; i < gameCards.length; i++) {
+    let path = `gifs/${doubleGifsArray[i]}.gif`;
+    gameCards[i].children[1].children[0].src = path;
   }
 }
 
@@ -39,4 +49,12 @@ function shuffle(array) {
     newArray[j] = temp;
   }
   return newArray;
+}
+
+function clickCard(e) {
+  if (!e.target.classList.contains("front")) return;
+
+  let currentCard = e.target.parentElement;
+
+  currentCard.classList.add("flipped");
 }

@@ -5,12 +5,13 @@ body {
 .btn:hover {
   cursor: pointer;
 }
+
 /* ================= */
 /*       Start       */
 /* ================= */
 
 #start {
-  height: 100vh;
+  height: 90vh;
   font-family: "bungee", cursive;
   position: relative;
   color: #ce29f7;
@@ -25,28 +26,63 @@ body {
   transform: rotateX(45deg);
   line-height: 0.75;
   color: #610079;
-}
-
-#start.playing {
-  margin-top: -100vh;
-  transition: margin-top 1000ms;
+  text-align: center;
 }
 
 /* ================= */
 /*        Game       */
 /* ================= */
 
+#start.playing {
+  margin-top: -90vh;
+  transition: margin-top 1000ms;
+}
+
+#start.playing + #game {
+  display: flex;
+  /* display: inline; */
+}
+
 #game {
   display: none;
 }
 
-#start.playing + #game {
-  display: inline;
+#game .row {
+  width: 100%;
+}
+
+.container {
+  flex-wrap: wrap;
 }
 
 /* ================= */
 /*        Card       */
 /* ================= */
+
+.game-card-wrapper {
+  perspective: 600px;
+  width: 75%;
+  position: relative;
+  margin: 0.28rem auto;
+  padding-bottom: 75%;
+  /* padding-bottom: 75%; */
+}
+
+.game-card-wrapper:hover {
+  cursor: pointer;
+}
+
+.game-card {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  transform-style: preserve-3d;
+  transition: transform 1000ms;
+}
+
+.game-card.flipped {
+  transform: rotateY(180deg);
+}
 
 .front,
 .back {
@@ -57,7 +93,9 @@ body {
   border-radius: 8px;
   height: 100%;
   width: 100%;
-  backface-visibility: visible;
+  backface-visibility: hidden;
+  overflow: hidden;
+  position: absolute;
 }
 
 .front {
@@ -74,10 +112,29 @@ body {
   width: auto;
 }
 
+.front > img {
+  height: 100%;
+  width: auto;
+}
+
 /* ================= */
 /*        End        */
 /* ================= */
 
 #end {
   display: none;
+}
+
+@media (max-width: 992px) {
+  .game-card-wrapper {
+    width: 100%;
+    padding-bottom: 100%;
+  }
+}
+
+@media (max-width: 992px) {
+  .game-card-wrapper {
+    width: 120%;
+    padding-bottom: 120%;
+  }
 }
