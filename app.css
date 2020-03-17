@@ -124,7 +124,7 @@ body {
 #end {
   display: none;
 }
-
+/* 
 @media (max-width: 992px) {
   .game-card-wrapper {
     width: 100%;
@@ -137,4 +137,4 @@ body {
     width: 120%;
     padding-bottom: 120%;
   }
-}
+} */
